@@ -36,7 +36,6 @@
     background-color: rgb(18, 218, 28);
     font-family: Pop;
     font-size: calc(0.7vw + 0.5em);
-    font-weight: 900;
     color: #FFF;
 }
 
@@ -67,7 +66,7 @@
     width: fit-content;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 .registerDisplay {
@@ -107,26 +106,130 @@
 }
 
 input[type=radio] {
-    transform: scale(1.5) translate3d(-0.3em, -0.05em, 0);
+    transform: scale(1.5) translate3d(-0.3em, -0.1em, 0);
 }
 
 input[type=checkbox] {
-    transform: scale(1.5) translate3d(-0.3em, -0.12em, 0);
+    transform: scale(1.5) translate3d(-0.5em, 0, 0);
+}
+
+.functionButtons {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.cleanAll {
+    background-color: rgb(218, 18, 18) !important;
+}
+
+.cleanAll:hover {
+    background-color: rgb(138, 11, 11) !important;
 }
 
 .makeBill {
+    width: 11em;
+    border: none;
+    padding: 0.5em;
+    margin: 2em 1em 1em 1em;
+    text-align: center;
+    font-family: Pop;
+    font-size: calc(0.8vw + 0.5em);
+    color: #fff;
+    background-color: rgb(18, 218, 28);
+    border-radius: 0.5em;
+}
+
+.makeBill:hover {
+    background-color: rgb(12, 136, 18);
+    cursor: pointer;
+}
+
+.billGeneratorContainer {
+    width: 100%;
+}
+
+.billGeneratorContainer button {
     display: block;
     border: none;
     padding: 0.5em;
     font-family: Pop;
     font-size: calc(0.8vw + 0.5em);
     color: #fff;
-    background-color: rgb(18, 218, 28);
+    background-color: rgb(255, 115, 59);
     border-radius: 0.5em;
     margin: 1em auto;
 }
 
-.makeBill:hover {
-    background-color: rgb(12, 136, 18);
+.billGeneratorContainer button:hover {
+    background-color: rgb(184, 83, 44);
     cursor: pointer;
+}
+
+hr {
+    border-top: 1px dashed grey;
+    color: transparent;
+    margin-bottom: 2em;
+}
+
+.billGenerator {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2em;
+}
+
+.billGenerator div {
+    width: 50%;
+    margin: 0.1em;
+    padding: 1em;
+    background-color: rgb(216, 245, 255);
+    border-radius: 0.3em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.billGenerator div p {
+    width: fit-content;
+    margin: 0;
+    font-family: Pop;
+    font-size: calc(0.8vw + 0.5em);
+    color: #747474;
+    letter-spacing: 0.1em;
+}
+
+.billGenerator div label {
+    width: fit-content;
+    font-family: Geo;
+    font-size: calc(0.8vw + 0.5em);
+    color: #747474;
+}
+
+@media (max-width: 500px) {
+    .clientRegisterContainer {
+        flex-direction: column;
+    }
+
+    .clientRegisterContainer input {
+        width: 12em;
+    }
+
+    .itemRegisterContainer {
+        flex-direction: column;
+    }
+
+    .itemRegisterContainer div input {
+        width: 12em;
+    }
+
+    input[type=radio] {
+        transform: scale(1.2) translate3d(-0.3em, -0.15em, 0);
+    }
+    
+    input[type=checkbox] {
+        transform: scale(1.2) translate3d(-0.5em, -0.05em, 0);
+    }
+
 }

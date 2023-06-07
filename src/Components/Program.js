@@ -1,5 +1,5 @@
 import styles from './Program.module.css';
-import Bill from './Bill';
+import classNames from 'classnames'
 
 function Program() {
 
@@ -87,6 +87,18 @@ function Program() {
         };
     };
 
+    function cleanAll () {
+        clients = [];
+        items = [];
+        productChose = 'none';
+        clientsChoose = [];
+        counter = 0;
+
+        document.getElementById('selectItem').innerHTML = '';
+        document.getElementById('selectClients').innerHTML = '';
+        document.getElementById('billGenerator').innerHTML = '';
+    }
+
     function makeBill () {
         if (productChose !== 'none' && clientsChoose.length !== 0) {
             let valueForPay = 0;
@@ -112,6 +124,36 @@ function Program() {
             clientsChoose = [];
 
         }
+    }
+
+    function billGenerator () {
+
+        const mainDiv = document.getElementById('billGenerator');
+        clear();   
+
+        clients.forEach(element => {
+            let div = document.createElement('div');
+
+            let p = document.createElement('p');
+            p.textContent = element.name + ': ';
+
+            let finalValue = element.value + (element.value * 0.1)
+
+            let label = document.createElement('label');
+            label.textContent = 'Valor a pagar: $ ' + finalValue.toFixed(2);
+
+            div.appendChild(p);
+            div.appendChild(label);
+
+            mainDiv.appendChild(div);
+        });
+    }
+
+    function clear () {
+
+        const mainDiv = document.getElementById('billGenerator');
+
+        mainDiv.innerHTML = '';
     }
 
     return (
@@ -159,18 +201,31 @@ function Program() {
 
                 </form>
 
-                <form onSubmit={(e) => e.preventDefault()} id="selectClients" className={styles.selectClients}>
+                <form onSubmit={(e) => e.preventDefault()} className={styles.selectClients}>
 
                 <p>Selecione os clientes</p>
 
+                <div id="selectClients">
+
+                </div>
 
                 </form>
 
             </div>
 
-            <button onClick={makeBill} className={styles.makeBill}>Cadastrar valor</button>
+            <div className={styles.functionButtons}>
+                <button onClick={makeBill} className={styles.makeBill}>Cadastrar valor</button>
+                <button onClick={cleanAll} className={classNames(styles.makeBill, styles.cleanAll)}>Limpar Tudo</button>
+            </div>
         
-            <Bill array ={clients} />
+            <div className={styles.billGeneratorContainer}>
+                <button onClick={billGenerator}>Gerar Conta</button>
+                <hr />
+
+                <div className={styles.billGenerator} id='billGenerator'>
+                
+            </div>
+        </div>
         </div>
     );
 };
