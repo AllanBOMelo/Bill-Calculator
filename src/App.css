@@ -1,4 +1,15 @@
 .app {
   width: 100%;
   height: 100vh;
+  font-family: Pop;
+}
+
+@font-face {
+  font-family: Pop;
+  src: url(./Font/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: Geo;
+  src: url(./Font/Geometria.woff);
 }
