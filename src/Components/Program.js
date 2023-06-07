@@ -38,32 +38,14 @@ function Program() {
         
     };
 
-    function selectClient (idGet) {
-        let id = document.getElementById(idGet).id
-
-        if (document.getElementById(idGet).checked === true) {
-            clientsChoose.push(id)
-            console.log(clientsChoose)
-        }
-
-        if (document.getElementById(idGet).checked === false) {
-            let index = clientsChoose.indexOf(id)
-            clientsChoose.splice(index,1)
-            console.log(clientsChoose)
-        }
-    }
-
     function ItemRegister (itemInput, valueInput) {
         let itemObject = {};
 
         if (itemInput !== '' && valueInput !== '') {
             itemObject.name = itemInput;
             itemObject.value = valueInput;
-            itemObject.clients = '';
 
             items.push(itemObject)
-
-            console.log(items) 
 
             let input = document.createElement('input')
             input.type = 'radio'
@@ -77,12 +59,57 @@ function Program() {
             label.innerHTML = input.value
 
             let div = document.createElement('div')
+            div.id = 'item' + itemObject.name
             div.appendChild(input)
             div.appendChild(label)
             document.getElementById('selectItem').appendChild(div)
             
         }
     };
+
+    function selectClient (idGet) {
+        let id = document.getElementById(idGet).id
+
+        if (document.getElementById(idGet).checked === true) {
+            clientsChoose.push(id)
+        }
+
+        if (document.getElementById(idGet).checked === false) {
+            let index = clientsChoose.indexOf(id)
+            clientsChoose.splice(index,1)
+        }
+    }
+
+    function makeBill () {
+        if (productChose !== 'none' && clientsChoose.length !== 0) {
+            let valueForPay = 0;
+
+            for (let i = 0; i< items.length; i++) {
+                if (productChose === items[i].name) {
+                    valueForPay = items[i].value / clientsChoose.length
+                    
+                    let item = document.getElementById('item' + items[i].name)
+                    item.parentNode.removeChild(item)
+                    items.splice(i, 1)
+
+                }
+            }
+
+            for (let i =0; i< clientsChoose.length; i++) {
+                for (let j =0; j< clients.length; j++) {
+                    if (clientsChoose[i] === clients[j].name) {
+                        clients[j].value = valueForPay;
+
+                        let client = document.getElementById(clients[j].name)
+                        client.checked = false
+                    }
+                }
+            }
+            productChose = 'none';
+            clientsChoose = [];
+
+        }
+    }
 
     return (
         <div>
@@ -107,6 +134,7 @@ function Program() {
                     ItemRegister(input.value, value.value)
 
                     input.value = ''
+                    value.value = ''
                 }}>submit produto</button>
             </form>
 
@@ -123,6 +151,8 @@ function Program() {
             
             
             </form>
+
+            <button onClick={makeBill}>Cadastrar valor</button>
         
             
         </div>
