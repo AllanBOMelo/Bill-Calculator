@@ -61,7 +61,7 @@ function Program() {
 
             let label = document.createElement('label');
             label.htmlFor = input.id;
-            label.innerHTML = input.value;
+            label.innerHTML = input.value + ": $ " + itemObject.value;
 
             let div = document.createElement('div');
             div.id = 'item' + counter;
@@ -116,46 +116,59 @@ function Program() {
 
     return (
         <div>
-            <form onSubmit={(e) => e.preventDefault()}>
-                <label>Cliente</label>
-                <input type="text" id='clientInput' />
-                <button type='submit' onClick={() => {
-                    let input = document.getElementById('clientInput');
+            <form onSubmit={(e) => e.preventDefault()} className={styles.registerContainer}>
 
-                    ClientRegister(input.value)
+                <div className={styles.clientRegisterContainer}>
+                    <input type="text" id='clientInput' placeholder='Nome do Cliente...' autoComplete='off' />
+                    <button type='submit' onClick={() => {
+                        let input = document.getElementById('clientInput');
 
-                    input.value = ''
-                }}>submit client</button>
+                        ClientRegister(input.value)
 
-                <label>Produto</label>
-                <input type="text" id='itemInput' />
-                <input type="number" id='itemvalueInput' />
-                <button type='submit' onClick={() => {
-                    let input = document.getElementById('itemInput');
-                    let value = document.getElementById('itemvalueInput')
+                        input.value = ''
+                    }}>Cadastrar Cliente</button>
+                </div>
+                
+                <div className={styles.itemRegisterContainer}>
+                    <div>
+                        <input type="text" id='itemInput' placeholder='Nome do produto...' autoComplete='off' />
+                        <input type="number" id='itemvalueInput' placeholder='Valor do produto...' autoComplete='off' />
+                    </div>
+                    
+                    <button type='submit' onClick={() => {
+                        let input = document.getElementById('itemInput');
+                        let value = document.getElementById('itemvalueInput')
 
-                    ItemRegister(input.value, value.value)
+                        ItemRegister(input.value, value.value)
 
-                    input.value = ''
-                    value.value = ''
-                }}>submit produto</button>
+                        input.value = ''
+                        value.value = ''
+                    }}>Cadastrar Produto</button>
+                </div>
+                
             </form>
 
-            <form onSubmit={(e) => e.preventDefault()} id="selectItem" className={styles.selectItem}>
+            <div className={styles.registerDisplay}>
 
-            <p>Selecione o Produto</p>
-            
-            
-            </form>
+                <form onSubmit={(e) => e.preventDefault()} className={styles.selectItem}>
 
-            <form onSubmit={(e) => e.preventDefault()} id="selectClients" className={styles.selectClients}>
+                <p>Selecione o Produto</p>
+                <div id="selectItem">
 
-            <p>Selecione os clientes</p>
-            
-            
-            </form>
+                </div>
 
-            <button onClick={makeBill}>Cadastrar valor</button>
+                </form>
+
+                <form onSubmit={(e) => e.preventDefault()} id="selectClients" className={styles.selectClients}>
+
+                <p>Selecione os clientes</p>
+
+
+                </form>
+
+            </div>
+
+            <button onClick={makeBill} className={styles.makeBill}>Cadastrar valor</button>
         
             <Bill array ={clients} />
         </div>

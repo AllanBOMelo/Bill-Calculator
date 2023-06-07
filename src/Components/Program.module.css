@@ -2,3 +2,131 @@
     display: flex;
     flex-direction: column;
 }
+
+.registerContainer {
+    margin-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.registerContainer input {
+    width: 18vw;
+    height: 3em;
+    border: 1px solid lightgrey;
+    border-radius: 0.5em;
+    padding: 0 0.5em;
+    background-color: rgb(255, 255, 255);
+    font-family: Pop;
+    font-size: calc(0.7vw + 0.5em);
+    margin-bottom: 0.5em;
+}
+
+.registerContainer input:focus {
+    outline: none;
+    box-shadow: 0 0 3px 2px rgba(173, 216, 230, 0.623);
+}
+
+.registerContainer button {
+    width: 10vw;
+    min-width: fit-content;
+    height: 3.2em;
+    border: none;
+    border-radius: 0.5em;
+    background-color: rgb(18, 218, 28);
+    font-family: Pop;
+    font-size: calc(0.7vw + 0.5em);
+    font-weight: 900;
+    color: #FFF;
+}
+
+.registerContainer button:hover {
+    background-color: rgb(12, 136, 18);
+    cursor: pointer;
+}
+
+.clientRegisterContainer {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.clientRegisterContainer input {
+    height: 3em;
+}
+
+.itemRegisterContainer {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.itemRegisterContainer div {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.registerDisplay {
+    width: 100%;
+    padding-bottom: 2em;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(68, 208, 255);
+    box-shadow: 0 3px 3px #0000001f;
+}
+
+.registerDisplay form {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.registerDisplay form p {
+    width: fit-content;
+    font-size: calc(1vw + 1em);
+    color: #fff;
+}
+
+.registerDisplay form label {
+    color: #fff;
+    font-size: calc(1vw + 0.5em);
+}
+
+.registerDisplay form div {
+    width: 100%;
+}
+
+.registerDisplay form div div {
+    width: 100%;
+    display: flex;
+}
+
+input[type=radio] {
+    transform: scale(1.5) translate3d(-0.3em, -0.05em, 0);
+}
+
+input[type=checkbox] {
+    transform: scale(1.5) translate3d(-0.3em, -0.12em, 0);
+}
+
+.makeBill {
+    display: block;
+    border: none;
+    padding: 0.5em;
+    font-family: Pop;
+    font-size: calc(0.8vw + 0.5em);
+    color: #fff;
+    background-color: rgb(18, 218, 28);
+    border-radius: 0.5em;
+    margin: 1em auto;
+}
+
+.makeBill:hover {
+    background-color: rgb(12, 136, 18);
+    cursor: pointer;
+}
