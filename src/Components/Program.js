@@ -94,11 +94,6 @@ function Program() {
             for (let i = 0; i< items.length; i++) {
                 if (productChose === items[i].name) {
                     valueForPay = items[i].value / clientsChoose.length;
-                    
-                    let id = items[i].id
-                    let item = document.getElementById('item' + id);
-                    item.parentNode.removeChild(item);
-                    items.splice(i, 1);
 
                 }
             }
@@ -106,14 +101,14 @@ function Program() {
             for (let i =0; i< clientsChoose.length; i++) {
                 for (let j =0; j< clients.length; j++) {
                     if (clientsChoose[i] === clients[j].name) {
-                        clients[j].value = valueForPay;
+                        clients[j].value += valueForPay;
 
                         let client = document.getElementById(clients[j].name);
                         client.checked = false;
                     }
                 }
             }
-            productChose = 'none';
+
             clientsChoose = [];
 
         }
