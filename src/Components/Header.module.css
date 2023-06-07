@@ -1,0 +1,24 @@
+.headerContainer {
+    background-color: rgb(87, 170, 248);
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 5px 5px #0000002c;
+}
+
+.headerContainer h2 {
+    width: fit-content;
+    margin: 0;
+    font-size: calc(2vw + 1em);
+    font-family: Geo;
+    color: #fff;
+}
+
+.headerContainer div {
+    content: '';
+    width: calc(2vw + 1em);
+    height: calc(2vw + 1em);
+    margin-left: 1em;
+    background-image: url(../Img/Isabelly\ site\ Elements\ \(7\).png);
+    background-size: 100% 100%;
+}
