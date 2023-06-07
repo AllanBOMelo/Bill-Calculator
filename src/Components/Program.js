@@ -1,4 +1,4 @@
-import './Program.css';
+import styles from './Program.module.css';
 import Bill from './Bill';
 
 function Program() {
@@ -141,14 +141,14 @@ function Program() {
                 }}>submit produto</button>
             </form>
 
-            <form onSubmit={(e) => e.preventDefault()} id="selectItem">
+            <form onSubmit={(e) => e.preventDefault()} id="selectItem" className={styles.selectItem}>
 
             <p>Selecione o Produto</p>
             
             
             </form>
 
-            <form onSubmit={(e) => e.preventDefault()} id="selectClients">
+            <form onSubmit={(e) => e.preventDefault()} id="selectClients" className={styles.selectClients}>
 
             <p>Selecione os clientes</p>
             
