@@ -1,5 +1,5 @@
-import './Program.css'
-
+import './Program.css';
+import Bill from './Bill';
 
 function Program() {
 
@@ -8,6 +8,7 @@ function Program() {
     let items = [];
     let productChose = 'none';
     let clientsChoose = [];
+    let counter = 0;
 
     function ClientRegister (nameInput) {
         let client = {};
@@ -15,26 +16,29 @@ function Program() {
         if (nameInput !== '') {
             client.name = nameInput;
             client.value = 0;
+            client.id = 'client' + counter;
 
-            clients.push(client)
+            clients.push(client);
 
-            let input = document.createElement('input')
-            input.type = 'checkbox'
-            input.id = client.name
-            input.name = client.name
-            input.value = client.name
-            input.onchange = () => {selectClient(input.id)}
+            let input = document.createElement('input');
+            input.type = 'checkbox';
+            input.id = client.name;
+            input.name = client.name;
+            input.value = client.name;
+            input.onchange = () => {selectClient(input.id)};
 
-            let label = document.createElement('label')
-            label.htmlFor = input.value
-            label.innerHTML = input.value
+            let label = document.createElement('label');
+            label.htmlFor = input.value;
+            label.innerHTML = input.value;
 
-            let div = document.createElement('div')
-            div.appendChild(input)
-            div.appendChild(label)
-            document.getElementById('selectClients').appendChild(div)
+            let div = document.createElement('div');
+            div.id = 'client' + counter;
+            div.appendChild(input);
+            div.appendChild(label);
+            document.getElementById('selectClients').appendChild(div);
 
-        }
+            counter += 1;
+        };
         
     };
 
@@ -44,41 +48,44 @@ function Program() {
         if (itemInput !== '' && valueInput !== '') {
             itemObject.name = itemInput;
             itemObject.value = valueInput;
+            itemObject.id = counter;
 
-            items.push(itemObject)
+            items.push(itemObject);
 
-            let input = document.createElement('input')
-            input.type = 'radio'
-            input.id = itemObject.name
-            input.name = 'optionItem'
-            input.value = itemObject.name
-            input.onclick = () => {productChose = itemObject.name}
+            let input = document.createElement('input');
+            input.type = 'radio';
+            input.id = itemObject.name ;
+            input.name = 'optionItem';
+            input.value = itemObject.name;
+            input.onclick = () => {productChose = itemObject.name};
 
-            let label = document.createElement('label')
-            label.htmlFor = input.id
-            label.innerHTML = input.value
+            let label = document.createElement('label');
+            label.htmlFor = input.id;
+            label.innerHTML = input.value;
 
-            let div = document.createElement('div')
-            div.id = 'item' + itemObject.name
-            div.appendChild(input)
-            div.appendChild(label)
-            document.getElementById('selectItem').appendChild(div)
+            let div = document.createElement('div');
+            div.id = 'item' + counter;
+            div.appendChild(input);
+            div.appendChild(label);
+            document.getElementById('selectItem').appendChild(div);
             
-        }
+        };
+
+        counter += 1;
     };
 
     function selectClient (idGet) {
-        let id = document.getElementById(idGet).id
+        let id = document.getElementById(idGet).id;
 
         if (document.getElementById(idGet).checked === true) {
-            clientsChoose.push(id)
-        }
+            clientsChoose.push(id);
+        };
 
         if (document.getElementById(idGet).checked === false) {
-            let index = clientsChoose.indexOf(id)
-            clientsChoose.splice(index,1)
-        }
-    }
+            let index = clientsChoose.indexOf(id);
+            clientsChoose.splice(index,1);
+        };
+    };
 
     function makeBill () {
         if (productChose !== 'none' && clientsChoose.length !== 0) {
@@ -86,11 +93,12 @@ function Program() {
 
             for (let i = 0; i< items.length; i++) {
                 if (productChose === items[i].name) {
-                    valueForPay = items[i].value / clientsChoose.length
+                    valueForPay = items[i].value / clientsChoose.length;
                     
-                    let item = document.getElementById('item' + items[i].name)
-                    item.parentNode.removeChild(item)
-                    items.splice(i, 1)
+                    let id = items[i].id
+                    let item = document.getElementById('item' + id);
+                    item.parentNode.removeChild(item);
+                    items.splice(i, 1);
 
                 }
             }
@@ -100,8 +108,8 @@ function Program() {
                     if (clientsChoose[i] === clients[j].name) {
                         clients[j].value = valueForPay;
 
-                        let client = document.getElementById(clients[j].name)
-                        client.checked = false
+                        let client = document.getElementById(clients[j].name);
+                        client.checked = false;
                     }
                 }
             }
@@ -154,9 +162,9 @@ function Program() {
 
             <button onClick={makeBill}>Cadastrar valor</button>
         
-            
+            <Bill array ={clients} />
         </div>
-    )
-}
+    );
+};
 
 export default Program;
