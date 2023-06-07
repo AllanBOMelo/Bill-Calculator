@@ -1,0 +1,4 @@
+#selectItem {
+    display: flex;
+    flex-direction: column;
+}
